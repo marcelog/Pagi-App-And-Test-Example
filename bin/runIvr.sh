@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 me=$(dirname ${0})
 root=$(readlink -f ${me}/..)

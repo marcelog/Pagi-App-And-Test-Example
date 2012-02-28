@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Get our base directory (the one where this script is located)
 me=$(dirname ${0})
