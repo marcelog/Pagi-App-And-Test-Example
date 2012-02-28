@@ -1,4 +1,5 @@
-An example PAGI IVR application, including unit tests with phpunit.
+An example PAGI IVR application (for asterisk and php, of course),
+including unit tests with phpunit.
 
 The code
 --------
