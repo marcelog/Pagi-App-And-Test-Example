@@ -1,7 +1,7 @@
 <?php
 $myDir = realpath(__DIR__ . '/..');
 define('APPLICATION_PATH', $myDir);
-$srcDir = $myDir . '/src/php';
+define('SOUNDS_PATH', $myDir . '/config/sounds');
 
 require_once 'PAGI/Autoloader/Autoloader.php';
 PAGI\Autoloader\Autoloader::register();

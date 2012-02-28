@@ -4,35 +4,39 @@ use PAGI\Application\PAGIApplication;
 class App extends PAGIApplication
 {
     private $hangup = false;
+    private $agi;
 
     public function init()
     {
-        $agi = $this->getAgi();
-        $agi->answer();
+        $this->agi = $this->getAgi();
+        $this->agi->answer();
     }
 
     public function shutdown()
     {
         // This is to avoid a double hangup
         if (!$this->hangup) {
-            $agi = $this->getAgi();
-            $agi->hangup();
+            $this->agi->hangup();
             $this->hangup = true;
         }
     }
 
     public function run()
     {
-        $agi = $this->getAgi();
-        $clid = $agi->getCallerId();
+        $clid = $this->agi->getCallerId();
         $number = $clid->getNumber();
         if ($number == 'anonymous') {
-            $agi->streamFile("i-cant-find-your-number");
+            $this->play("i-cant-find-your-number");
         } else {
-            $agi->streamFile("you-are-calling-from");
-            $agi->sayDigits($number);
+            $this->play("you-are-calling-from");
+            $this->agi->sayDigits($number);
         }
-        $agi->streamFile("bye");
+        $this->play("bye");
+    }
+
+    private function play($sound)
+    {
+        $this->agi->streamFile(SOUNDS_PATH . "/$sound");
     }
 
     public function errorHandler($type, $msg, $file, $line)
