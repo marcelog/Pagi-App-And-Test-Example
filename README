@@ -1,5 +1,13 @@
 An example PAGI IVR application, including unit tests with phpunit.
 
+The code
+--------
+* src/php/App.php is the IVR application itself.
+* test/php/App/AppTest.php is a phpunit test case for the ivr application. It
+contains 2 unit tests.
+
+The other files server as a skeleton for running everything.
+
 Config
 ------
 1.- Copy the directory "config.example" (and its contents)
