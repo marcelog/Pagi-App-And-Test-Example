@@ -7,7 +7,8 @@ root=$(readlink -f ${me}/..)
  cd ${root}/test && \
  ${phpexec} ${vendors}/bin/phpunit \
    ${phpargs} --configuration phpunit.xml --verbose --colors \
-   --bootstrap ../bin/bootstrap.php && \
+   --bootstrap ../bin/bootstrap.php \
+   --coverage-html ${root}/runtime/coverage && \
  cd - \
 )
 
