@@ -1,0 +1,37 @@
+An example PAGI IVR application, including unit tests with phpunit.
+
+Config
+------
+1.- Copy the directory "config.example" (and its contents)
+to "config".
+2.- Edit config/php.ini if you need to change xdebug extension
+path.
+3.- Edit config/cli.properties. Change "php" and "pear" to match the
+paths in your filesystem (usually /usr/bin/php and /usr/bin/pear).
+
+That's it.
+
+Install dependencies (pagi, log4php, and phpunit)
+------------------------------------------------
+This will download the dependencies and install them in the "vendor" directory:
+
+$ bin/setup/install-dependencies.sh
+
+Run the tests
+-------------
+$ bin/test.sh
+
+The coverage will be generated as html in runtime/coverage.
+You can find resulting logs from tests in runtime/log/dev.log
+
+Run the IVR
+-----------
+In your extensions.conf, put these lines (modify to suit your paths):
+exten => 123,1,AGI(/home/ivr/bin/runIvr.sh)
+exten => 123,n,Hangup
+
+Run the application by calling 123 (or the extension you've configured).
+Resulting logs are in runtime/log/production.log
+
+
+
