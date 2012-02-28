@@ -21,9 +21,9 @@ class AppTest extends PHPUnit_Framework_TestCase
         $mock
             ->assert('answer')
             ->assert('getFullVariable', array('CALLERID(num)'))
-            ->assert('streamFile', array('you-are-calling-from'))
+            ->assert('streamFile', array(SOUNDS_PATH . '/you-are-calling-from'))
             ->assert('sayDigits', array('5555555'))
-            ->assert('streamFile', array('bye'))
+            ->assert('streamFile', array(SOUNDS_PATH . '/bye'))
             ->assert('hangup')
             ->onAnswer(true)
             ->onGetFullVariable(true, '5555555')
@@ -48,8 +48,8 @@ class AppTest extends PHPUnit_Framework_TestCase
         $mock
             ->assert('answer')
             ->assert('getFullVariable', array('CALLERID(num)'))
-            ->assert('streamFile', array('i-cant-find-your-number'))
-            ->assert('streamFile', array('bye'))
+            ->assert('streamFile', array(SOUNDS_PATH . '/i-cant-find-your-number'))
+            ->assert('streamFile', array(SOUNDS_PATH . '/bye'))
             ->assert('hangup')
             ->onAnswer(true)
             ->onGetFullVariable(true, 'anonymous')
