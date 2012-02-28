@@ -1,5 +1,7 @@
 An example PAGI IVR application (for asterisk and php, of course),
-including unit tests with phpunit.
+including unit tests with phpunit. This is the source code for
+the article at:
+http://marcelog.github.com/articles/pagi_mock_client_unit_test_ivr_application_telephony_asterisk_agi.html
 
 The code
 --------
