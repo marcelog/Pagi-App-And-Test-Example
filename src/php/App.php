@@ -5,15 +5,23 @@ class App extends PAGIApplication
 {
     private $hangup = false;
     private $agi;
+    private $asteriskLogger = null;
 
     public function init()
     {
         $this->agi = $this->getAgi();
         $this->agi->answer();
+        $this->logger->info('Init');
+        $this->asteriskLogger = $this->agi->getAsteriskLogger();  
+        $this->asteriskLogger->notice('Init');
     }
 
     public function shutdown()
     {
+        if ($this->asteriskLogger !== null) {
+            $this->asteriskLogger->notice('Shutdown');
+        }
+        $this->logger->info("Shutdown");
         // This is to avoid a double hangup
         if (!$this->hangup) {
             $this->agi->hangup();
@@ -23,6 +31,8 @@ class App extends PAGIApplication
 
     public function run()
     {
+        $this->asteriskLogger->notice("Run");  
+        $this->logger->info("Run"); 
         $clid = $this->agi->getCallerId();
         $number = $clid->getNumber();
         if ($number == 'anonymous') {
@@ -41,9 +51,17 @@ class App extends PAGIApplication
 
     public function errorHandler($type, $msg, $file, $line)
     {
+        if ($this->asteriskLogger !== null) {
+            $this->asteriskLogger->error("$message at $file:$line");
+        }
+        $this->logger->error("$message at $file:$line");
     }
 
     public function signalHandler($signal)
     {
+        if ($this->asteriskLogger !== null) {
+            $this->asteriskLogger->notice("Got signal: $signal");
+        }
+        $this->logger->info("Got signal: $signal");
     }
 }
