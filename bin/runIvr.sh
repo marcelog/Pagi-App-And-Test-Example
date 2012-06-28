@@ -7,4 +7,4 @@ root=$(dirname ${me})/..
 
 . ${root}/config/cli.properties
 
-${bin}/run.sh ivr
+exec ${bin}/run.sh ivr

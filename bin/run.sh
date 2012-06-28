@@ -20,4 +20,4 @@ shift
 # Invoke php with our custom ini file and include path,
 # passing every other argument in the command line to the
 # stub.
-${phpexec} ${bin}/${stub}.php ${@}
+exec ${phpexec} ${bin}/${stub}.php ${@}

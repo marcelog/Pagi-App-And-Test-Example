@@ -63,5 +63,6 @@ class App extends PAGIApplication
             $this->asteriskLogger->notice("Got signal: $signal");
         }
         $this->logger->info("Got signal: $signal");
+        exit(0);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(ticks=1);
 $myDir = realpath(__DIR__ . '/..');
 define('APPLICATION_PATH', $myDir);
 define('SOUNDS_PATH', $myDir . '/config/sounds');
