@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # Get our base directory (the one where this script is located)
-# http://mywiki.wooledge.org/BashFAQ/028
-me=$([[ $0 == /* ]] && echo "$0" || echo "${PWD}/${0#./}")
-root=$(dirname ${me})/../..
+me=$(dirname ${0})
+root=${me}/../..
+root=`cd ${root}; pwd`
 
 # Try to include the well known config file.
 configFile=${root}/config/cli.properties
