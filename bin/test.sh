@@ -7,13 +7,4 @@ root=`cd ${root}; pwd`
 
 . ${root}/config/cli.properties
 
-( \
- cd ${root}/test && \
- ${phpexec} ${vendors}/bin/phpunit \
-   ${phpargs} --configuration phpunit.xml --verbose --colors \
-   --bootstrap ../bin/bootstrap.php \
-   --coverage-html ${root}/runtime/coverage && \
- cd - \
-)
-
-
+${phpexec} ${vendors}/bin/phpunit ${phpargs} -v --debug -c test/resources/phpunit.xml

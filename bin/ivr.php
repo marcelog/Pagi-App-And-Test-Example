@@ -1,9 +1,7 @@
 <?php
-require_once __DIR__ . '/bootstrap.php';
+require_once implode(DIRECTORY_SEPARATOR, array(__DIR__, 'bootstrap.php'));
 
-$client = PAGI\Client\Impl\ClientImpl::getInstance(array(
-    'log4php.properties' => __DIR__ . '/../config/log4php.properties'
-));
+$client = PAGI\Client\Impl\ClientImpl::getInstance();
 
 try
 {

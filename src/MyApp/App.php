@@ -1,4 +1,6 @@
 <?php
+namespace MyApp;
+
 use PAGI\Application\PAGIApplication;
 
 class App extends PAGIApplication
@@ -12,7 +14,7 @@ class App extends PAGIApplication
         $this->agi = $this->getAgi();
         $this->agi->answer();
         $this->logger->info('Init');
-        $this->asteriskLogger = $this->agi->getAsteriskLogger();  
+        $this->asteriskLogger = $this->agi->getAsteriskLogger();
         $this->asteriskLogger->notice('Init');
     }
 
@@ -31,8 +33,8 @@ class App extends PAGIApplication
 
     public function run()
     {
-        $this->asteriskLogger->notice("Run");  
-        $this->logger->info("Run"); 
+        $this->asteriskLogger->notice("Run");
+        $this->logger->info("Run");
         $clid = $this->agi->getCallerId();
         $number = $clid->getNumber();
         if ($number == 'anonymous') {

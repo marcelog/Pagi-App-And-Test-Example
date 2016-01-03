@@ -6,7 +6,6 @@ class AppTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->properties = array(
-            'log4php.properties' => __DIR__ . '/../../resources/log4php.properties',
             'variables' => array(),
             'resultString' => array()
         );
@@ -32,8 +31,8 @@ class AppTest extends PHPUnit_Framework_TestCase
             ->onStreamFile(false, '#')
             ->onHangup(true)
         ;
-        
-        $app = new App(array('pagiClient' => $mock));
+
+        $app = new MyApp\App(array('pagiClient' => $mock));
         $app->init();
         $app->run();
         $app->shutdown();
@@ -57,7 +56,7 @@ class AppTest extends PHPUnit_Framework_TestCase
             ->onStreamFile(false, '#')
             ->onHangup(true)
         ;
-        $app = new App(array('pagiClient' => $mock));
+        $app = new MyApp\App(array('pagiClient' => $mock));
         $app->init();
         $app->run();
         $app->shutdown();
