@@ -34,11 +34,14 @@ You can find resulting logs from tests in runtime/log/dev.log
 Run the IVR
 -----------
 In your extensions.conf, put these lines (modify to suit your paths):
+
+```
 exten => 123,1,AGI(/home/ivr/bin/runIvr.sh)
 exten => 123,n,Hangup
+```
 
 Run the application by calling 123 (or the extension you've configured).
-Resulting logs are in runtime/log/production.log
+Resulting logs are in `runtime/log/production.log`
 
 
 
