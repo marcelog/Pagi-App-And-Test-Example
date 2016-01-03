@@ -15,12 +15,12 @@ The other files serve as a skeleton for running everything.
 
 # Config
 
-1.- Copy the directory "config.example" (and its contents) to "config".
-2.- Edit config/php.ini if you need to change xdebug extension
+1. Copy the directory "config.example" (and its contents) to "config".
+2. Edit config/php.ini if you need to change xdebug extension
 path.
-3.- Edit config/cli.properties. Change "php" and "pear" to match the
+3. Edit config/cli.properties. Change "php" and "pear" to match the
 paths in your filesystem (usually /usr/bin/php and /usr/bin/pear).
-4.- Run `./composer.phar install`
+4. Run `./composer.phar install`
 
 # Run the tests
 
