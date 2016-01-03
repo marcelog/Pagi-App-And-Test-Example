@@ -5,7 +5,8 @@ define('APPLICATION_PATH', $myDir);
 define('SOUNDS_PATH', $myDir . '/config/sounds');
 
 require_once implode(DIRECTORY_SEPARATOR, array(
-  __DIR__.
+  __DIR__,
+  '..',
   'vendor',
   'autoload.php'
 ));

@@ -1,11 +1,21 @@
 <?php
 require_once implode(DIRECTORY_SEPARATOR, array(__DIR__, 'bootstrap.php'));
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
-$client = PAGI\Client\Impl\ClientImpl::getInstance();
+$log = new Logger('name');
+$log->pushHandler(new StreamHandler(
+  __DIR__ . '/../runtime/log/production.log', Logger::DEBUG
+));
+
 
 try
 {
-    $app = new App(array('pagiClient' => $client));
+    $client = PAGI\Client\Impl\ClientImpl::getInstance();
+    $client->setLogger($log);
+    $app = new MyApp\App(array('pagiClient' => $client));
+    $app->setLogger($log);
+
     $app->init();
     $app->run();
     $app->shutdown();

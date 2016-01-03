@@ -1,4 +1,8 @@
 <?php
+use MyApp\App;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 class AppTest extends PHPUnit_Framework_TestCase
 {
     private $properties;
@@ -17,6 +21,11 @@ class AppTest extends PHPUnit_Framework_TestCase
     public function can_read_caller_id()
     {
         $mock = new PAGI\Client\Impl\MockedClientImpl($this->properties);
+        $log = new Logger('name');
+        $log->pushHandler(new StreamHandler(
+          __DIR__ . '/../runtime/log/test.log', Logger::DEBUG
+        ));
+        $mock->setLogger($log);
         $mock
             ->assert('answer')
             ->assert('getFullVariable', array('CALLERID(num)'))
@@ -32,7 +41,8 @@ class AppTest extends PHPUnit_Framework_TestCase
             ->onHangup(true)
         ;
 
-        $app = new MyApp\App(array('pagiClient' => $mock));
+        $app = new App(array('pagiClient' => $mock));
+        $app->setLogger($log);
         $app->init();
         $app->run();
         $app->shutdown();
@@ -44,6 +54,11 @@ class AppTest extends PHPUnit_Framework_TestCase
     public function can_handle_anonymous_calls()
     {
         $mock = new PAGI\Client\Impl\MockedClientImpl($this->properties);
+        $log = new Logger('name');
+        $log->pushHandler(new StreamHandler(
+          __DIR__ . '/../runtime/log/test.log', Logger::DEBUG
+        ));
+        $mock->setLogger($log);
         $mock
             ->assert('answer')
             ->assert('getFullVariable', array('CALLERID(num)'))
@@ -56,10 +71,10 @@ class AppTest extends PHPUnit_Framework_TestCase
             ->onStreamFile(false, '#')
             ->onHangup(true)
         ;
-        $app = new MyApp\App(array('pagiClient' => $mock));
+        $app = new App(array('pagiClient' => $mock));
+        $app->setLogger($log);
         $app->init();
         $app->run();
         $app->shutdown();
     }
 }
-

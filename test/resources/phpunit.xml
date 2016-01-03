@@ -19,18 +19,24 @@
     timeoutForMediumTests="10"
     timeoutForLargeTests="60"
     verbose="true">
-  <filter>
-    <whitelist>
-      <directory suffix=".php">../../src</directory>
-    </whitelist>
-  </filter>
-  <testsuites>
-    <testsuite name="App">
-      <directory suffix=".php">..</directory>
-    </testsuite>
-  </testsuites>
+
+    <testsuites>
+        <testsuite name="Main Suite">
+            <directory suffix="Test.php">..</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../src</directory>
+        </whitelist>
+        <exclude>
+            <directory suffix=".php">../vendor</directory>
+        </exclude>
+    </filter>
+
     <logging>
-      <log type="coverage-html" target="../../build/coverage-html"/>
-      <log type="coverage-clover" target="../../build/logs/clover.xml"/>
+        <log type="coverage-html" target="../../build/coverage-html"/>
+        <log type="coverage-clover" target="../../build/logs/clover.xml"/>
     </logging>
 </phpunit>
